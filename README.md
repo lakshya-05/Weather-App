@@ -32,9 +32,11 @@ If the API request fails (e.g., invalid city name), the application displays an 
 
 ### Security: 
 The API key is stored as an environment variable, which is a more secure practice than embedding it directly in the code.
-### Libraries Used:
-requests: For making HTTP requests to the API.
-os: For accessing environment variables.
+
+### Modules Used:
+- requests: For making HTTP requests to the API.
+- os: For accessing environment variables.
+- tkinter: For GUI.
 
 ### Units: 
 The temperature is displayed in Fahrenheit.
@@ -43,7 +45,7 @@ The temperature is displayed in Fahrenheit.
 - Quick weather checks for a user's current location or a location they plan to visit.
 - Travel planning.
 - Daily weather briefings.
-- Educational tool for learning about APIs and JSON.
+- Educational tool for learning about APIs, GUI and JSON.
 - Potential for integration with other applications (e.g., desktop widgets, home automation).
 - Potential for weather monitoring with further development.
 
