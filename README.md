@@ -1,5 +1,5 @@
 # Weather-App
-Simple weather app using api
+Simple weather app using api and gui
 
 ### Purpose: 
 The application retrieves and displays weather information for a given city.
