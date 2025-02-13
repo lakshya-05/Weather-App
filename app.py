@@ -1,5 +1,5 @@
 # app.py
-# The temperature is in Fahrenheit
+# The temperature is in Fahrenheit which is later converted to Celsius
 
 
 # Colors used with their HEX code
@@ -16,16 +16,22 @@ from tkinter import *
 apikey = '80176a7a1679abae8cf6ccab1bf60653'
 
 
+def far_to_Cel(far):
+    cel = (far - 32) / 1.8
+    cel = int(cel)
+    return cel
+
+
 def handle_weather():
     city = city_ip.get()
-    messagebox.showinfo("Message", f"Weather Details of {city} has been added to the dashboard")
+    messagebox.showinfo("Message", f"Weather Details of {city} has been SUCCESSFULLY added to the dashboard")
 
     weather_data = requests.get(
         f"https://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&APPID={apikey}")
 
     weather = weather_data.json()['weather'][0]['main']
     weather_des = weather_data.json()['weather'][0]['description']
-    temp = weather_data.json()['main']['temp']
+    temp = far_to_Cel(weather_data.json()['main']['temp'])
     humidity = weather_data.json()['main']['humidity']
     City = city.upper()
 
@@ -42,7 +48,7 @@ def handle_weather():
     weather_des_of_city.pack(pady=(5, 2))
     weather_des_of_city.config(font=('verdana', 11))
 
-    temp_of_city = Label(root, text="Current temperature : " + str(temp) + "°F", bg="#FCBACB", fg="black", width=26)
+    temp_of_city = Label(root, text="Current temperature : " + str(temp) + "°C", bg="#FCBACB", fg="black", width=26)
     temp_of_city.pack(pady=(5, 2))
     temp_of_city.config(font=('verdana', 11))
 
@@ -66,6 +72,8 @@ def handle_weather():
 # print(f"Current Temperature - {temp}°F")
 # print(f"Humidity - {humidity}")
 
+
+# Main Program
 
 root = Tk()
 root.title('Weather.apk')
