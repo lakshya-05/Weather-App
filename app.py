@@ -10,10 +10,8 @@
 
 
 import requests
-from tkinter import messagebox
 from tkinter import *
-
-apikey = '80176a7a1679abae8cf6ccab1bf60653'
+from PIL import Image, ImageTk
 
 
 def far_to_Cel(far):
@@ -22,9 +20,118 @@ def far_to_Cel(far):
     return cel
 
 
+def weather_images(weather):
+    match weather:
+        case "Clear":
+            img = Image.open("1 sun.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Clouds":
+            img = Image.open("2 cloudy.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Rain":
+            img = Image.open("3 heavy-rain.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Drizzle":
+            img = Image.open("4  light rain.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Thunderstorm":
+            img = Image.open("5 storm.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Snow":
+            img = Image.open("6 snowflake.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Mist":
+            img = Image.open("7 misty.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Fog":
+            img = Image.open("8 fog.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Haze":
+            img = Image.open("9 haze.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Smoke":
+            img = Image.open("10 smoke.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Dust":
+            img = Image.open("11 dust.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Sand":
+            img = Image.open("12 sand.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Ash":
+            img = Image.open("13 volcanic-ash.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Squall":
+            img = Image.open("14 windstorm.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+        case "Tornado":
+            img = Image.open("15 tornado.png")
+            img_size = img.resize((50, 50), Image.LANCZOS)
+            img_n = ImageTk.PhotoImage(img_size)
+            img_label = Label(root, image=img_n)
+            img_label.image = img_n
+            img_label.pack(pady=(5, 2))
+
+
 def handle_weather():
+    apikey = '80176a7a1679abae8cf6ccab1bf60653'
     city = city_ip.get()
-    messagebox.showinfo("Message", f"Weather Details of {city} has been SUCCESSFULLY added to the dashboard")
 
     weather_data = requests.get(
         f"https://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&APPID={apikey}")
@@ -44,7 +151,9 @@ def handle_weather():
     weather_of_city.pack(pady=(5, 2))
     weather_of_city.config(font=('verdana', 11))
 
-    weather_des_of_city = Label(root, text="Description : " + weather_des, bg="#FCBACB", fg="black", width=20)
+    weather_images(weather=weather)
+
+    weather_des_of_city = Label(root, text="Description : " + weather_des, bg="#FCBACB", fg="black", width=24)
     weather_des_of_city.pack(pady=(5, 2))
     weather_des_of_city.config(font=('verdana', 11))
 
@@ -55,22 +164,6 @@ def handle_weather():
     humidity_of_city = Label(root, text="Humidity : " + str(humidity), bg="#FCBACB", fg="black", width=15)
     humidity_of_city.pack(pady=(5, 20))
     humidity_of_city.config(font=('verdana', 11))
-
-
-# city = input("Enter city : ")
-
-# weather_data = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&APPID={apikey}")
-#
-# weather = weather_data.json()['weather'][0]['main']
-# weather_des = weather_data.json()['weather'][0]['description']
-# temp = weather_data.json()['main']['temp']
-# humidity = weather_data.json()['main']['humidity']
-# City = city.upper()
-
-
-# print(f"The weather of {City} is {weather}, description - {weather_des}.")
-# print(f"Current Temperature - {temp}°F")
-# print(f"Humidity - {humidity}")
 
 
 # Main Program
