@@ -1,5 +1,5 @@
 # Weather-App
-Simple weather app using api and gui
+Weather app using api and gui
 
 ### Purpose: 
 The application retrieves and displays weather information for a given city.
@@ -8,7 +8,8 @@ The application retrieves and displays weather information for a given city.
 It uses the OpenWeatherMap API to fetch weather data.
 
 ### Language: 
-The application is written in Python.
+- The application is written in Python.
+- The language used for input and output for the user is English.
 
 ### Input: 
 The user provides the city name as input.
@@ -20,15 +21,13 @@ The user provides the city name as input.
 - It receives a response from the API, containing weather data in JSON format.
 - It parses the JSON response to extract relevant information:
     - Main weather condition (e.g., "Clouds", "Rain").
+    - Icon representing the weather condition.
     - Detailed weather description (e.g., "scattered clouds", "light rain").
     - Current temperature in Fahrenheit.
     - Humidity level.
       
 ### Output: 
 The application displays the extracted weather information to the user.
-
-### Error Handling: 
-If the API request fails (e.g., invalid city name), the application displays an error message.
 
 ### Security: 
 The API key is stored as an environment variable, which is a more secure practice than embedding it directly in the code.
@@ -37,9 +36,10 @@ The API key is stored as an environment variable, which is a more secure practic
 - requests: For making HTTP requests to the API.
 - os: For accessing environment variables.
 - tkinter: For GUI.
+- pillow: Loads, resizes, and displays images in Tkinter.
 
 ### Units: 
-The temperature is displayed in Fahrenheit.
+The temperature is displayed in Celsius.
 
 ### Use Cases:
 - Quick weather checks for a user's current location or a location they plan to visit.
